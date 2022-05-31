@@ -55,7 +55,7 @@ func main() {
 		panic(err)
 	}
 
-	resp, err := http.Get("http://localhost:8080/norm")
+	resp, err := http.Get("http://" + os.Getenv("NORM_HOST") + "/norm")
 	if err != nil {
 		panic(err)
 	}
@@ -73,7 +73,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		resp, err := http.Post("http://localhost:8080/norm?username="+userName+"&filename="+info.Name(),
+		resp, err := http.Post("http://"+ os.Getenv("NORM_HOST") + "/norm?username="+userName+"&filename="+info.Name(),
 			"text/x-c", bytes.NewReader(data))
 		if err != nil {
 			panic(err)
